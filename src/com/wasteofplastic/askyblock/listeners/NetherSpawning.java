@@ -19,6 +19,7 @@ package com.wasteofplastic.askyblock.listeners;
 import java.util.Random;
 
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Skeleton;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -77,7 +78,8 @@ public class NetherSpawning implements Listener {
                 if (DEBUG)
                     plugin.getLogger().info("DEBUG: Wither Skelly spawned");
                 e.setCancelled(true);
-                e.getLocation().getWorld().spawnEntity(e.getLocation(), EntityType.WITHER_SKELETON);
+                Skeleton skeleton = e.getLocation().getWorld().spawn(e.getLocation(), Skeleton.class);
+                skeleton.setSkeletonType(Skeleton.SkeletonType.WITHER);
             } else {
                 if (DEBUG)
                     plugin.getLogger().info("DEBUG: Standard Skelly spawned");

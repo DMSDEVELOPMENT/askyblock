@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.TreeMap;
 import java.util.UUID;
 
+import com.wasteofplastic.askyblock.dms.DmsInitializer;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -73,7 +74,6 @@ import com.wasteofplastic.askyblock.listeners.AcidEffect;
 import com.wasteofplastic.askyblock.listeners.ChatListener;
 import com.wasteofplastic.askyblock.listeners.CleanSuperFlat;
 import com.wasteofplastic.askyblock.listeners.FlyingMobEvents;
-import com.wasteofplastic.askyblock.listeners.HeroChatListener;
 import com.wasteofplastic.askyblock.listeners.IslandGuard;
 import com.wasteofplastic.askyblock.listeners.IslandGuard1_8;
 import com.wasteofplastic.askyblock.listeners.IslandGuard1_9;
@@ -410,14 +410,6 @@ public class ASkyBlock extends JavaPlugin {
                     HandlerList.unregisterAll(plugin);
                     return;
                 }
-                // Try to register Herochat
-                if (Bukkit.getServer().getPluginManager().isPluginEnabled("Herochat")) {
-                    try {
-                        getServer().getPluginManager().registerEvents(new HeroChatListener(plugin), plugin);
-                    } catch (Exception e) {
-                        plugin.getLogger().severe("Could not register with Herochat");
-                    }
-                }
                 // Run these one tick later to ensure worlds are loaded.
                 getServer().getScheduler().runTask(plugin, new Runnable() {
                     @Override
@@ -563,6 +555,7 @@ public class ASkyBlock extends JavaPlugin {
                 }
             }
         });
+        DmsInitializer.load();
     }
 
     /**

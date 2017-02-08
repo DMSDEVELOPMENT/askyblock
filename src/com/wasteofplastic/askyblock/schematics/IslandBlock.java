@@ -200,11 +200,6 @@ public class IslandBlock {
             WEtoME.put("ENDERCRYSTAL", EntityType.ENDER_CRYSTAL);
             WEtoME.put("ARMORSTAND", EntityType.ARMOR_STAND);
         }
-        // 1.10 entities and materials
-        if (!Bukkit.getServer().getVersion().contains("(MC: 1.7") && !Bukkit.getServer().getVersion().contains("(MC: 1.8") && !Bukkit.getServer().getVersion().contains("(MC: 1.9")) {
-            WEtoME.put("POLARBEAR", EntityType.POLAR_BEAR);
-            WEtoM.put("ENDER_CRYSTAL", Material.END_CRYSTAL); // 1.11
-        }
     }
 
     /**

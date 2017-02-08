@@ -2414,7 +2414,6 @@ public class IslandGuard implements Listener {
                     }
                 }
                 break;
-            case LLAMA:
             case HORSE:
                 //plugin.getLogger().info("Horse riding");
                 if (island == null && !Settings.allowHorseRiding) {
