@@ -1,5 +1,6 @@
 com/wasteofplastic/askyblock/nms/v1_8_R3/NMSHandler.class
 com/wasteofplastic/askyblock/panels/SetBiome$2$1.class
+com/wasteofplastic/askyblock/dms/DmsInitializer$1.class
 com/wasteofplastic/askyblock/listeners/FlyingMobEvents$1.class
 com/wasteofplastic/askyblock/listeners/NetherPortals.class
 com/wasteofplastic/askyblock/util/MapUtil$1.class
@@ -82,6 +83,7 @@ com/wasteofplastic/askyblock/listeners/IslandGuard1_9$1.class
 com/wasteofplastic/askyblock/panels/BiomeItem.class
 com/wasteofplastic/askyblock/commands/IslandCmd$1.class
 com/wasteofplastic/askyblock/DeleteIslandChunk$1.class
+com/wasteofplastic/askyblock/dms/DmsInitializer$2.class
 com/wasteofplastic/askyblock/panels/SetBiome$3.class
 com/wasteofplastic/askyblock/TinyDB$2$1.class
 com/wasteofplastic/askyblock/listeners/WorldLoader.class
