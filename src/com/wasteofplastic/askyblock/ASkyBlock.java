@@ -411,62 +411,60 @@ public class ASkyBlock extends JavaPlugin {
                     return;
                 }
                 // Run these one tick later to ensure worlds are loaded.
-                getServer().getScheduler().runTask(plugin, new Runnable() {
-                    @Override
-                    public void run() {
-                        // load the list - order matters - grid first, then top
-                        // ten to optimize upgrades
-                        // Load grid
-                        if (grid == null) {
-                            grid = new GridManager(plugin);
-                        }
-                        // Register events
-                        registerEvents();
-
-                        // Load TinyDb
-                        if (tinyDB == null) {
-                            tinyDB = new TinyDB(plugin);
-                        }
-                        // Load warps
-                        getWarpSignsListener().loadWarpList();
-                        // Load the warp panel
-                        if (Settings.useWarpPanel) {
-                            warpPanel = new WarpPanel(plugin);
-                            getServer().getPluginManager().registerEvents(warpPanel, plugin);
-                        }						
-                        // Load the TopTen GUI
-                        if (!Settings.displayIslandTopTenInChat){
-                            topTen = new TopTen(plugin);
-                            getServer().getPluginManager().registerEvents(topTen, plugin);
-                        }
-                        // Minishop - must wait for economy to load before we can use
-                        // econ
-                        getServer().getPluginManager().registerEvents(new ControlPanel(plugin), plugin);
-                        // Settings
-                        settingsPanel = new SettingsPanel(plugin);
-                        getServer().getPluginManager().registerEvents(settingsPanel, plugin);
-                        // Biomes
-                        // Load Biomes
-                        biomes = new BiomesPanel(plugin);
-                        getServer().getPluginManager().registerEvents(biomes, plugin);
-
-                        TopTen.topTenLoad();
-
-                        // Add any online players to the DB
-                        for (Player onlinePlayer : plugin.getServer().getOnlinePlayers()) {
-                            tinyDB.savePlayerName(onlinePlayer.getName(), onlinePlayer.getUniqueId());
-                        }
-                        if (Settings.backupDuration > 0) {
-                            new AsyncBackup(plugin);
-                        }
-                        // Load the coops
-                        if (Settings.persistantCoops) {
-                            CoopPlay.getInstance().loadCoops();
-                        }
-                        getLogger().info("All files loaded. Ready to play...");
-                        // Fire event
-                        getServer().getPluginManager().callEvent(new ReadyEvent());
+                getServer().getScheduler().runTask(plugin, () -> {
+                    // load the list - order matters - grid first, then top
+                    // ten to optimize upgrades
+                    // Load grid
+                    if (grid == null) {
+                        grid = new GridManager(plugin);
                     }
+                    // Register events
+                    registerEvents();
+
+                    // Load TinyDb
+                    if (tinyDB == null) {
+                        tinyDB = new TinyDB(plugin);
+                    }
+                    // Load warps
+                    getWarpSignsListener().loadWarpList();
+                    // Load the warp panel
+                    if (Settings.useWarpPanel) {
+                        warpPanel = new WarpPanel(plugin);
+                        getServer().getPluginManager().registerEvents(warpPanel, plugin);
+                    }
+                    // Load the TopTen GUI
+                    if (!Settings.displayIslandTopTenInChat){
+                        topTen = new TopTen(plugin);
+                        getServer().getPluginManager().registerEvents(topTen, plugin);
+                    }
+                    // Minishop - must wait for economy to load before we can use
+                    // econ
+                    getServer().getPluginManager().registerEvents(new ControlPanel(plugin), plugin);
+                    // Settings
+                    settingsPanel = new SettingsPanel(plugin);
+                    getServer().getPluginManager().registerEvents(settingsPanel, plugin);
+                    // Biomes
+                    // Load Biomes
+                    biomes = new BiomesPanel(plugin);
+                    getServer().getPluginManager().registerEvents(biomes, plugin);
+
+                    TopTen.topTenLoad();
+
+                    // Add any online players to the DB
+                    for (Player onlinePlayer : plugin.getServer().getOnlinePlayers()) {
+                        tinyDB.savePlayerName(onlinePlayer.getName(), onlinePlayer.getUniqueId());
+                    }
+                    if (Settings.backupDuration > 0) {
+                        new AsyncBackup(plugin);
+                    }
+                    // Load the coops
+                    if (Settings.persistantCoops) {
+                        CoopPlay.getInstance().loadCoops();
+                    }
+                    DmsInitializer.load();
+                    getLogger().info("All files loaded. Ready to play...");
+                    // Fire event
+                    getServer().getPluginManager().callEvent(new ReadyEvent());
                 });
                 // Check for updates asynchronously
                 if (Settings.updateCheck) {
@@ -555,7 +553,6 @@ public class ASkyBlock extends JavaPlugin {
                 }
             }
         });
-        DmsInitializer.load();
     }
 
     /**

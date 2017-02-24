@@ -3,8 +3,7 @@ main: com.wasteofplastic.askyblock.ASkyBlock
 version: ${version}
 description: A SkyBlock Plugin
 author: Tastybento
-depend: [Vault]
-softdepend: [Herochat]
+depend: [RMCS]
 load: startup
 loadbefore: [Multiverse-Core]
 commands:

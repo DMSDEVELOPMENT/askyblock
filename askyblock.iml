@@ -34,7 +34,7 @@
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.14" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.md-5:bungeecord-chat:1.8-SNAPSHOT" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: ru.luvas:RMCS:1.3.1.8" level="project" />
-    <orderEntry type="module" module-name="MineOS" scope="PROVIDED" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: sexy.kostya:MineOS:1.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.mina:mina-core:2.0.9" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.slf4j:slf4j-api:1.7.7" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.16.6" level="project" />
